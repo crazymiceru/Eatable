@@ -22,14 +22,12 @@ namespace Eatable
 
                 _button=obj.gameObject.GetComponentInChildren<Button>();
                 if (_button != null) _button.onClick.AddListener(Click);
-
             }
             );
         }
 
         protected override void OnDispose() => _button.onClick.RemoveListener(Click);
 
-        private void Click()=> _gameState.Value = GameState.StartLevel;
-        
+        private void Click()=> _gameState.Value = GameState.StartLevel;        
     }
 }

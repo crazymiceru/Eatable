@@ -1,7 +1,5 @@
 ﻿using DG.Tweening;
-using System;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Eatable
 {
@@ -9,6 +7,7 @@ namespace Eatable
     {
         #region Fields
 
+        private const string _nameEffectRes = "Star.prefab";
         private GameModel _gameModel;
         private ControllerBasic _card;
         private Vector3 _startTransformCard;
@@ -53,7 +52,7 @@ namespace Eatable
                 var endPosition = _card[0].gameObject.transform.position - vector * _cfg.ExitLenghth * Screen.width;
 
                 _card[0].gameObject.transform.DOMove(endPosition, _cfg.SpeedCorrectExitCard).OnComplete(CreateCard);
-                AddEffect("Star.prefab", _card[0].gameObject.transform.position, 50);
+                AddEffect(_nameEffectRes, _card[0].gameObject.transform.position, 50);
             }
             else
                 _card[0].gameObject.transform.DOShakePosition(_cfg.SpeedIncorrectExitCard, _cfg.ShakeStrenghth,
@@ -66,11 +65,11 @@ namespace Eatable
             {
                 CreateGameObjectAddressable(nameRes, Reference.Canvas, position, Quaternion.identity, (obj) =>
                  {
-                     obj.gameObject.transform.DOMove(position + Random.insideUnitSphere * 300, 0.5f).OnComplete(() =>
-                          {
-                              DestroyGameObject(obj);
-                              obj.gameObject.transform.DOKill();
-                          });
+                     obj.gameObject.transform.DOMove(position + Random.insideUnitSphere * 0.4f * Screen.width, 0.5f).OnComplete(() =>
+                            {
+                                DestroyGameObject(obj);
+                                obj.gameObject.transform.DOKill();
+                            });
                      obj.gameObject.transform.DORotate(new Vector3(0, 0, 180), 0.5f, RotateMode.FastBeyond360).SetLoops(-1);
                  });
             }

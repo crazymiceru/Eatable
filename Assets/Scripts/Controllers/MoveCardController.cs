@@ -23,6 +23,13 @@ namespace Eatable
             _viewCard.evtOnBeginDrag += BeginDrag;
             _viewCard.evtOnEndDrag += EndDrag;
             _startPos = _transform.position;
+            _gameModel.TypeGuess.Subscribe(DoCard);
+        }
+
+        private void DoCard(TypeGuess typeGuess)
+        {
+            if (typeGuess != TypeGuess.none)
+                Unsubscribe();
         }
 
         public void Execute(float deltaTime)
@@ -31,7 +38,9 @@ namespace Eatable
             _transform.position = Input.mousePosition - _differencePosMouse;
         }
 
-        protected override void OnDispose()
+        protected override void OnDispose() => Unsubscribe();
+
+        private void Unsubscribe()
         {
             _viewCard.evtOnBeginDrag -= BeginDrag;
             _viewCard.evtOnEndDrag -= EndDrag;
@@ -47,7 +56,7 @@ namespace Eatable
         private void EndDrag()
         {
             var difference = _transform.position.x - _startPos.x;
-            if (Mathf.Abs(difference) > _gameModel.GameCfg.SizeSwipe*Screen.width)
+            if (Mathf.Abs(difference) > _gameModel.GameCfg.SizeSwipe * Screen.width)
             {
                 if (difference < 0) _stateForCard.DoNonEat();
                 else _stateForCard.DoEat();

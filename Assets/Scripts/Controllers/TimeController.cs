@@ -52,11 +52,13 @@ namespace Eatable
 
             _image.fillAmount = _gameModel.CurrentTime.Value / _gameModel.TimeReaction;
 
-            if (_currentIntTime  != (int)(_gameModel.CurrentTime.Value + _constRounding))
+            if (_currentIntTime != (int)(_gameModel.CurrentTime.Value + _constRounding))
             {
                 _currentIntTime = (int)(_gameModel.CurrentTime.Value + _constRounding);
                 _text.text = _currentIntTime.ToString();
-                _text.gameObject.transform.DOShakeScale(0.1f, 1, 5, 100);
+
+                DOTween.Sequence().Append(_text.gameObject.transform.DOShakeScale(0.1f, 1, 5, 100)).
+                    Append(_text.gameObject.transform.DOScale(Vector3.one, 0.1f));
             }
         }
 

@@ -32,7 +32,8 @@ namespace Eatable
             if (gameObjectText.TryGetComponent(out TextMeshProUGUI text))
                 text.text = dataCard.name;
 
-            IStateForCard stateForCard = dataCard.isEatable ? (IStateForCard)new StateForEat(_gameModel) : (IStateForCard)new StateForNonEat(_gameModel);
+            IStateForCard stateForCard = dataCard.isEatable ? (IStateForCard)new StateForEat(_gameModel) :
+                (IStateForCard)new StateForNonEat(_gameModel);
 
             AddController(new MoveCardController(viewCard,_gameModel, stateForCard));
             viewCard.transform.DOScale(new Vector3(1,1,1),_gameModel.GameCfg.SpeedReturnCard);                
