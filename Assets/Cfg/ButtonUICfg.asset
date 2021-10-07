@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc15ab22f64c294f9421eab6d5c2134, type: 3}
+  m_Name: ButtonUICfg
+  m_EditorClassIdentifier: 
+  typeAnimationData:
+  - typeTransitionButton: 2
+    typeAnimation: 2
+    ease: 0
+    audioClip: {fileID: 0}
+    value: 2
+    duration: 0.1
+    isLoop: 0
+    isClearPosition: 0
+  - typeTransitionButton: 4
+    typeAnimation: 2
+    ease: 0
+    audioClip: {fileID: 0}
+    value: 1
+    duration: 0.5
+    isLoop: 0
+    isClearPosition: 0
+  - typeTransitionButton: 1
+    typeAnimation: 1
+    ease: 0
+    audioClip: {fileID: 0}
+    value: 55
+    duration: 1
+    isLoop: 1
+    isClearPosition: 0
